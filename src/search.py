@@ -39,6 +39,7 @@ RESPONDA A "PERGUNTA DO USUÁRIO"
 
 
 def search_prompt(question=None):
+  try:
     if not question:
         raise ValueError("A pergunta não pode estar vazia.")
 
@@ -65,6 +66,9 @@ def search_prompt(question=None):
     chat = ChatOpenAI(model="gpt-5-nano")
     response = chat.invoke(prompt_template)
     return response.content
+  except Exception as e:
+    print(f"Erro ao buscar resposta: {e}")
+    return None
 
 
 

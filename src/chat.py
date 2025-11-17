@@ -5,22 +5,25 @@ check_env()
 
 def main():
     question = input("PERGUNTA: ")
-    
+
+    if question.lower() == "sair":
+        print("Até mais!")
+        return
+
     if not question.strip():
         print("A pergunta não pode estar vazia.")
-        main()
-        return
+        return main()
     
     chain = search_prompt(question)
     if not chain:
         print("Não foi possível iniciar o chat. Verifique os erros de inicialização.")
         return
     print("RESPOSTA:", chain, "\n\n")
-    main()
+    return main()
 
 
 if __name__ == "__main__":
 
-    print("\nBem-vindo ao sistema de perguntas e respostas! \n")
+    print("\nBem-vindo ao sistema de perguntas e respostas! Para sair digite 'sair'.\n")
     print("======="*10)
     main()
