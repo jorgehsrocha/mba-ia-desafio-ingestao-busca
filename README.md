@@ -2,26 +2,36 @@
 
 Para executar o projeto, siga os passos abaixo:
 
-1. Clone o repositório:
+Atenção: O projeto utiliza a OpenAI API, certifique-se de ter uma chave válida e configurada na variável de ambiente `OPENAI_API_KEY`.
+
+1. Configure as variáveis de ambiente necessárias no arquivo `.env`:
+    ```env
+        OPENAI_API_KEY=
+        OPENAI_EMBEDDING_MODEL='text-embedding-3-small'
+        DATABASE_URL=postgresql+psycopg://postgres:postgres@localhost:5432/rag
+        PG_VECTOR_COLLECTION_NAME=
+    ```
+
+2. Clone o repositório:
     ```bash
     git clone <repository_url>
-2. Execute os serviços necessários presentes no `docker-compose.yml`:
+3. Execute os serviços necessários presentes no `docker-compose.yml`:
     ```bash
     docker-compose up -d
     ```
-3. Navegue até o diretório do projeto:
+5. Navegue até o diretório do projeto:
     ```bash
     cd mba-ia-desafio-ingestao-busca
     ```
-4. Instale as dependências:
+6. Instale as dependências:
     ```bash
     pip install -r requirements.txt
     ```
-5. Ingestão de documentos PDF:
+7. Ingestão de documentos PDF:
     ```bash
     python -m src.ingest
     ```
-6. Inicie o chat para fazer perguntas sobre os documentos ingeridos:
+8. Inicie o chat para fazer perguntas sobre os documentos ingeridos:
     ```bash
     python -m src.chat
     ```
