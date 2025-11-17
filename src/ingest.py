@@ -5,19 +5,10 @@ from langchain_community.document_loaders import PyMuPDFLoader
 
 from langchain_openai import OpenAIEmbeddings
 from langchain_postgres import PGVector
+from src.check_env import check_env
 
 load_dotenv()
-
-required_env_vars = [
-    "OPENAI_API_KEY",
-    "OPENAI_EMBEDDING_MODEL",
-    "DATABASE_URL",
-    "PG_VECTOR_COLLECTION_NAME"
-]
-
-env_errors = [f"Environment variable {var} is not set." for var in required_env_vars if not os.getenv(var)]
-if env_errors:
-    raise EnvironmentError(" ".join(env_errors))
+check_env()
 
 PDF_PATH = os.path.join(os.path.dirname(__file__), "..","document.pdf")
 

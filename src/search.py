@@ -1,11 +1,14 @@
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from src.check_env import check_env
+check_env()
 
 from langchain_core.prompts import PromptTemplate
 
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_postgres import PGVector
+
 
 PROMPT_TEMPLATE = """
 CONTEXTO:

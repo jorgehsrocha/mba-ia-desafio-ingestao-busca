@@ -1,4 +1,7 @@
-from .search import search_prompt
+from src.search import search_prompt
+from src.check_env import check_env
+
+check_env()
 
 def main():
     question = input("PERGUNTA: ")
