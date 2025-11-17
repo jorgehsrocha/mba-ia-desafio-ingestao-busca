@@ -19,7 +19,7 @@ Para executar o projeto, siga os passos abaixo:
     ```
 5. Ingestão de documentos PDF:
     ```bash
-    python src/ingest.py
+    python -m src.ingest
     ```
 6. Inicie o chat para fazer perguntas sobre os documentos ingeridos:
     ```bash
