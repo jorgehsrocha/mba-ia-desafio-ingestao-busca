@@ -49,7 +49,7 @@ def search_prompt(question=None):
         connection=os.environ.get("DATABASE_URL"),
         use_jsonb=True
     )
-    context = vector_store.similarity_search(
+    context = vector_store.similarity_search_with_score(
       k=10,
       query=question
     )
@@ -59,7 +59,7 @@ def search_prompt(question=None):
         template=PROMPT_TEMPLATE
     )
     prompt_template = prompt.format(
-      contexto="\n\n".join([doc.page_content for doc in context]),
+      contexto="\n".join([f"Score: {score}\n Content: {doc.page_content} \n\n" for doc, score in context]),
       pergunta=question
     )
     chat = ChatOpenAI(model="gpt-5-nano")
